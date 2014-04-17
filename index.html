@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image composer</title>
+
+	<link href='http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="img-comp.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="img-comp.js"></script>
+	<script src="UploadImage.service.js"></script>
+	<script src="dropzone.directive.js"></script>
+	<script src="imagesHolder.directive.js"></script>
+</head>
+<body data-ng-app="image-composer">
+
+<ol class="cont top-margin--big" data-ng-controller="ComposerCtrl">
+	<li class="bg--1" data-dropzone="uploadImages()">
+		<div class="number">1</div>
+		<div class="action">
+			Upload some new images (or just drop them here)
+			<div class="action-area">
+				<input
+					type="file"
+					multiple
+					onchange="angular.element(this).scope().uploadImages(event, this)"
+					class="high"
+				>
+			</div>
+		</div>
+	</li>
+	<li class="bg--2">
+		<div class="number">2</div>
+		<div class="action">
+			Place images on canvas as you like
+			<div class="action-area">
+				<images-holder data-images="images"></images-holder>
+			</div>
+		</div>
+	</li>
+	<li class="bg--3">
+		<div class="number">3</div>
+		<div class="action">
+			Dowload resulting image
+			<div class="action-area"></div>
+		</div>
+	</li>
+</ol>
+
+</body>
+</html>
