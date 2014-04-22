@@ -79,6 +79,18 @@ input[type="file"] {
 
 .images-holder-img {
 	width: 100px;
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.center-text {
+	text-align: center;
+}
+
+canvas {
+	background-color: white;
 }
 
 

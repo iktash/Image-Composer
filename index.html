@@ -12,11 +12,12 @@
 	<script src="UploadImage.service.js"></script>
 	<script src="dropzone.directive.js"></script>
 	<script src="imagesHolder.directive.js"></script>
+	<script src="composerCanvas.directive.js"></script>
 </head>
 <body data-ng-app="image-composer">
 
 <ol class="cont top-margin--big" data-ng-controller="ComposerCtrl">
-	<li class="bg--1" data-dropzone="uploadImages()">
+	<li class="bg--1" data-dropzone="uploadImages">
 		<div class="number">1</div>
 		<div class="action">
 			Upload some new images (or just drop them here)
@@ -34,8 +35,10 @@
 		<div class="number">2</div>
 		<div class="action">
 			Place images on canvas as you like
-			<div class="action-area">
+			<div class="action-area center-text">
 				<images-holder data-images="images"></images-holder>
+				<br>
+				<composer-canvas></composer-canvas>
 			</div>
 		</div>
 	</li>

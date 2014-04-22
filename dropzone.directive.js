@@ -1,6 +1,7 @@
 app.directive("dropzone", function(UploadImage) {
     return {
         restrict: "A",
+        scope: {callback: '&dropzone'},
         link: function(scope, elem, attrs) {
             elem.bind('dragover', function(e) {
                 e.preventDefault();
@@ -22,10 +23,8 @@ app.directive("dropzone", function(UploadImage) {
                 
                 elem.removeClass('bg--over');
 
-                var promise = UploadImage.upload(e.dataTransfer.files);
-                promise.then(function(images) {
-                    scope.images = scope.images.concat(images);
-                });
+                var callback = scope.callback();
+                callback(e);
             });
         }
     }
