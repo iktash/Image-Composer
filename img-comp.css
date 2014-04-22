@@ -90,7 +90,8 @@ input[type="file"] {
 }
 
 canvas {
-	background-color: white;
+	background-color: black;
+	margin: 0.5em;
 }
 
 

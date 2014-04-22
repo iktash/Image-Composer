@@ -37,8 +37,11 @@
 			Place images on canvas as you like
 			<div class="action-area center-text">
 				<images-holder data-images="images"></images-holder>
-				<br>
-				<composer-canvas></composer-canvas>
+				<br data-ng-show="images.length > 0">
+				<composer-canvas
+					data-text="Place images here"
+				>
+				</composer-canvas>
 			</div>
 		</div>
 	</li>
