@@ -1,39 +1,43 @@
-app.directive("composerCanvas", function($window) {
+app.directive("composerCanvas", function($window, ImageCanvas) {
     var resizeCanvas = function(canvas) {
-        canvas[0].width = $window.innerWidth * 0.7;
-        canvas[0].height = canvas[0].width * 0.5;
-    }
-
-    var placeText = function(canvas, text) {
-        var ctx = canvas[0].getContext("2d");
-        
-        var canvasWidth = canvas[0].width;
-        var canvasHeight = canvas[0].height;
-
-        ctx.font = "1em serif";
-        ctx.textAlign = "center";
-        ctx.fillStyle = "White";
-        ctx.fillText(text, canvasWidth / 2, canvasHeight / 2);
+        canvas.width = $window.innerWidth * 0.65;
+        canvas.height = canvas.width * 0.5;
     }
 
     return {
         restrict: "E",
         replace: true,
         template: "<canvas></canvas>",
-        link: function (scope, elem, attrs) {
-            var initCanvas = function() {
-                resizeCanvas(elem);
-                if (attrs.text) {
-                    placeText(elem, attrs.text);
-                }
+        require: "ngModel",
+        link: function (scope, elem, attrs, ngModel) {
+            if (!ngModel) {
+                return;
             }
 
-            initCanvas();
+            raw_canvas = elem[0];
+
+            resizeCanvas(raw_canvas);
             angular.element($window).bind('resize', function() {
-                initCanvas();
+                resizeCanvas(raw_canvas);
             });
 
-            
+            elem.bind('dragover', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.dataTransfer.dropEffect = 'copy';
+
+                return false;
+            });
+
+            elem.bind('drop', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                ImageCanvas.paintImage(raw_canvas, e.dataTransfer.getData('text/plain'));
+                scope.$apply(function() {
+                    ngModel.$setViewValue(ImageCanvas.getDownloadURL(raw_canvas));
+                });
+            });
         }
     }
 });

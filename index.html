@@ -10,8 +10,9 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 	<script src="img-comp.js"></script>
 	<script src="UploadImage.service.js"></script>
+	<script src="ImageCanvas.service.js"></script>
 	<script src="dropzone.directive.js"></script>
-	<script src="imagesHolder.directive.js"></script>
+	<script src="setDragData.directive.js"></script>
 	<script src="composerCanvas.directive.js"></script>
 </head>
 <body data-ng-app="image-composer">
@@ -31,25 +32,50 @@
 			</div>
 		</div>
 	</li>
-	<li class="bg--2">
+	<li class="bg--2" data-ng-class="{'step-inactive': !step2}">
 		<div class="number">2</div>
 		<div class="action">
 			Place images on canvas as you like
 			<div class="action-area center-text">
-				<images-holder data-images="images"></images-holder>
+				<img
+				    data-ng-src="{{ src }}"
+				    data-ng-repeat="src in images track by $index"
+				    data-set-drag-data="{{ src }}";
+				    class="images-holder-img"
+				>
 				<br data-ng-show="images.length > 0">
 				<composer-canvas
-					data-text="Place images here"
+					data-ng-show="step2"
+					data-ng-model="resulting_image_url"
 				>
 				</composer-canvas>
 			</div>
 		</div>
 	</li>
-	<li class="bg--3">
+	<li class="bg--3" data-ng-class="{'step-inactive': !step3}">
 		<div class="number">3</div>
 		<div class="action">
 			Dowload resulting image
-			<div class="action-area"></div>
+			<div class="action-area">
+				<div data-ng-show="step3">
+					<br>
+					<img ng-src="{{ resulting_image_url }}" class="thumb">
+					<span class="text--smaller">
+						right click on thumbnail and save the image
+					</span>
+					<br>
+					<span class="text--smaller">
+						or 
+						<a
+							href="#"
+							data-ng-click="openResultingImage()"
+							data-ng-show="step3"
+						>
+							open image full size in a new window
+						</a>
+					</span>			
+				</div>
+			</div>
 		</div>
 	</li>
 </ol>

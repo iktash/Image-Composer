@@ -8,7 +8,8 @@
 html,
 body {
 	font-size: 16px;
-	background-color: #9c9c9c;
+	background-color: #6f6f6f;
+	color: #313131;
 }
 
 .top-margin--big {
@@ -52,6 +53,10 @@ ol.cont li {
 	background-color: #deffcb;
 }
 
+.step-inactive {
+	color: #ccc;
+}
+
 .number {
 	font-size: 3em;
 	padding: 0 0.5em;
@@ -78,11 +83,25 @@ input[type="file"] {
 }
 
 .images-holder-img {
-	width: 100px;
-	margin-right: 0.5em;
-	margin-bottom: 0.5em;
+	height: 120px;
 	vertical-align: middle;
+	padding: 0.3em;
+
+	background: none;
+	-webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    -o-transition: background-color 500ms ease;
+    -ms-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
+}
+.images-holder-img:hover {
 	cursor: pointer;
+	background: #aaa;
+	-webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    -o-transition: background-color 500ms ease;
+    -ms-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
 }
 
 .center-text {
@@ -92,6 +111,15 @@ input[type="file"] {
 canvas {
 	background-color: black;
 	margin: 0.5em;
+}
+
+.thumb {
+	width: 125px;
+	vertical-align: middle;
+}
+
+.text--smaller {
+	font-size: 0.8em;
 }
 
 
