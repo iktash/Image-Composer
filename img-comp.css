@@ -108,30 +108,33 @@ input[type="file"] {
 	text-align: center;
 }
 
-canvas {
-	background-color: black;
-	margin: 0.5em;
-}
-
 .thumb {
 	width: 125px;
 	vertical-align: middle;
+	float: left;
+	margin-right: 1em
 }
 
 .text--smaller {
 	font-size: 0.8em;
 }
 
-.substrate {
-	width: 100%;
-}
-.substrate {
-	background-color: #aaa;
-}
-
 
 @media (max-width: 1210px) {
 	.top-margin--big {
 		margin-top: 0;
+	}
+}
+
+@media (max-width: 600px) {
+	html,
+	body {
+		font-size: 14px;
+	}
+}
+@media (max-width: 400px) {
+	html,
+	body {
+		font-size: 12px;
 	}
 }

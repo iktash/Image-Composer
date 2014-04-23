@@ -6,8 +6,9 @@
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="img-comp.css">
+	<link rel="stylesheet" type="text/css" href="composerCanvas.css">
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="angular.min.js"></script>
 	<script src="img-comp.js"></script>
 	<script src="UploadImage.service.js"></script>
 	<script src="ImageCanvas.service.js"></script>
@@ -35,22 +36,22 @@
 	<li class="bg--2" data-ng-class="{'step-inactive': !step2}">
 		<div class="number">2</div>
 		<div class="action">
-			Place images on canvas as you like
+			Place images on canvas' sides
 			<div class="action-area center-text">
-				<img
-				    data-ng-src="{{ src }}"
-				    data-ng-repeat="src in images track by $index"
-				    data-set-drag-data="{{ src }}";
-				    class="images-holder-img"
-				>
-				<br data-ng-show="images.length > 0">
-				<div class="substrate substrate--grey">
+				<div data-ng-show="step2">
+					<img
+					    data-ng-src="{{ src }}"
+					    data-ng-repeat="src in images track by $index"
+					    data-set-drag-data="{{ src }}";
+					    class="images-holder-img"
+					>
+					<br data-ng-show="images.length > 0">
 					<composer-canvas
-						data-ng-show="step2"
 						data-ng-model="resulting_image_url"
 						data-max-width="70%"
+						data-resize="true"
 					>
-					</composer-canvas>					
+					</composer-canvas>
 				</div>
 			</div>
 		</div>

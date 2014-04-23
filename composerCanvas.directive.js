@@ -1,24 +1,33 @@
 app.directive("composerCanvas", function($window, ImageCanvas) {
     var setSize = function(jcanvas) {
         jcanvas.css({
-            'max-width': '70%',
-            'max-height': $window.innerHeight * 0.6 + 'px'
+            'max-width': $window.innerWidth * 0.6 + 'px',
+            'max-height': $window.innerHeight * 0.3 + 'px'
         });
     }
 
     return {
         restrict: "E",
         replace: true,
-        template: "<canvas></canvas>",
+        templateUrl: "composerCanvas.template.html",
         require: "ngModel",
         link: function (scope, elem, attrs, ngModel) {
             if (!ngModel) {
                 return;
             }
 
-            raw_canvas = elem[0];
+            var canvas = elem.find('canvas');
+            var raw_canvas = canvas[0];
 
-            setSize(elem);
+            setSize(canvas);
+
+            if (attrs.resize) {
+                angular.element($window).bind('resize', function() {
+                    scope.$apply(function() {
+                        setSize(canvas);
+                    });
+                });
+            }
 
             elem.bind('dragover', function(e) {
                 e.preventDefault();
@@ -28,7 +37,7 @@ app.directive("composerCanvas", function($window, ImageCanvas) {
                 return false;
             });
 
-            elem.bind('drop', function(e) {
+            canvas.bind('drop', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
