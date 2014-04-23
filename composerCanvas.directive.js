@@ -1,7 +1,9 @@
 app.directive("composerCanvas", function($window, ImageCanvas) {
-    var resizeCanvas = function(canvas) {
-        canvas.width = $window.innerWidth * 0.65;
-        canvas.height = canvas.width * 0.5;
+    var setSize = function(jcanvas) {
+        jcanvas.css({
+            'max-width': '70%',
+            'max-height': $window.innerHeight * 0.6 + 'px'
+        });
     }
 
     return {
@@ -16,10 +18,7 @@ app.directive("composerCanvas", function($window, ImageCanvas) {
 
             raw_canvas = elem[0];
 
-            resizeCanvas(raw_canvas);
-            angular.element($window).bind('resize', function() {
-                resizeCanvas(raw_canvas);
-            });
+            setSize(elem);
 
             elem.bind('dragover', function(e) {
                 e.preventDefault();

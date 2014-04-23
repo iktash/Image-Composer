@@ -44,11 +44,14 @@
 				    class="images-holder-img"
 				>
 				<br data-ng-show="images.length > 0">
-				<composer-canvas
-					data-ng-show="step2"
-					data-ng-model="resulting_image_url"
-				>
-				</composer-canvas>
+				<div class="substrate substrate--grey">
+					<composer-canvas
+						data-ng-show="step2"
+						data-ng-model="resulting_image_url"
+						data-max-width="70%"
+					>
+					</composer-canvas>					
+				</div>
 			</div>
 		</div>
 	</li>

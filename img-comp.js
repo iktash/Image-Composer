@@ -1,6 +1,6 @@
 var app = angular.module("image-composer", []);
 
-app.controller('ComposerCtrl', function($scope, UploadImage) {
+app.controller('ComposerCtrl', function($scope, UploadImage, ImageCanvas) {
 	$scope.step2 = false;
 	$scope.step3 = false;
 	$scope.images = [];
@@ -22,6 +22,14 @@ app.controller('ComposerCtrl', function($scope, UploadImage) {
 		}
 	});
 
+	var putFirstImageOnCanvas = function(image_src) {
+		var canvases = document.getElementsByTagName('canvas');
+		
+		ImageCanvas.paintImage(canvases[0], image_src);
+
+		$scope.resulting_image_url = ImageCanvas.getDownloadURL(canvases[0]);
+	}
+
 	$scope.uploadImages = function(e, el) {
 		var files = e.target.files || e.dataTransfer.files;
 		var promise = UploadImage.upload(files);
@@ -32,11 +40,15 @@ app.controller('ComposerCtrl', function($scope, UploadImage) {
 			if (el) {
 				angular.element(el).val('');
 			}
+
+			if (! $scope.step3) {
+				putFirstImageOnCanvas($scope.images[0]);
+			}
 		});
 	}
 
 	$scope.openResultingImage = function() {
-        url = $scope.resulting_image_url/*.replace(/^data:image\/[^;]/, 'data:application/octet-stream')*/;
+        url = $scope.resulting_image_url;
 		window.open(url, '_blank');
 
 		return false;

@@ -122,6 +122,13 @@ canvas {
 	font-size: 0.8em;
 }
 
+.substrate {
+	width: 100%;
+}
+.substrate {
+	background-color: #aaa;
+}
+
 
 @media (max-width: 1210px) {
 	.top-margin--big {
