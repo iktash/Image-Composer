@@ -5,6 +5,7 @@ app.controller('ComposerCtrl', function($scope, UploadImage, ImageCanvas) {
 	$scope.step3 = false;
 	$scope.images = [];
 	$scope.resulting_image_url = '';
+	$scope.resulting_resolution = {};
 
 	$scope.$watch('images.length', function(new_value) {
 		if (new_value > 0) {
@@ -17,6 +18,13 @@ app.controller('ComposerCtrl', function($scope, UploadImage, ImageCanvas) {
 	$scope.$watch('resulting_image_url', function(new_value) {
 		if (new_value != '') {
 			$scope.step3 = true;
+
+			var im = new Image();
+			im.src = new_value;
+			$scope.resulting_resolution = {
+				width: im.width,
+				height: im.height
+			}
 		} else {
 			$scope.step3 = false;
 		}

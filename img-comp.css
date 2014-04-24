@@ -109,16 +109,24 @@ input[type="file"] {
 }
 
 .thumb {
-	width: 125px;
+	max-width: 125px;
+	max-height: 125px;
 	vertical-align: middle;
-	float: left;
-	margin-right: 1em
 }
 
 .text--smaller {
 	font-size: 0.8em;
 }
 
+.pad-left {
+	padding-left: 1em;
+}
+
+.download {
+	border-collapse: separate;
+	border-spacing: 0;
+	border: none;
+}
 
 @media (max-width: 1210px) {
 	.top-margin--big {

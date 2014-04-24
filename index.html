@@ -19,7 +19,7 @@
 <body data-ng-app="image-composer">
 
 <ol class="cont top-margin--big" data-ng-controller="ComposerCtrl">
-	<li class="bg--1" data-dropzone="uploadImages">
+	<li class="bg--1" data-dropzone="uploadImages" data-over-class="bg--over">
 		<div class="number">1</div>
 		<div class="action">
 			Upload some new images (or just drop them here)
@@ -36,7 +36,7 @@
 	<li class="bg--2" data-ng-class="{'step-inactive': !step2}">
 		<div class="number">2</div>
 		<div class="action">
-			Place images on canvas' sides
+			Place images over canvas' sides
 			<div class="action-area center-text">
 				<div data-ng-show="step2">
 					<img
@@ -47,8 +47,7 @@
 					>
 					<br data-ng-show="images.length > 0">
 					<composer-canvas
-						data-ng-model="resulting_image_url"
-						data-max-width="70%"
+						data-result="resulting_image_url"
 						data-resize="true"
 					>
 					</composer-canvas>
@@ -63,21 +62,31 @@
 			<div class="action-area">
 				<div data-ng-show="step3">
 					<br>
-					<img ng-src="{{ resulting_image_url }}" class="thumb">
-					<span class="text--smaller">
-						right click on thumbnail and save the image
-					</span>
-					<br>
-					<span class="text--smaller">
-						or 
-						<a
-							href="#"
-							data-ng-click="openResultingImage()"
-							data-ng-show="step3"
-						>
-							open image full size in a new window
-						</a>
-					</span>			
+					<table class="download">
+						<tr>
+							<td class="center-text text--smaller">
+								<img ng-src="{{ resulting_image_url }}" class="thumb">
+								<br>
+								({{ resulting_resolution.width }} x {{ resulting_resolution.height }})
+							</td>
+							<td class="pad-left">
+								<span class="text--smaller">
+									right click on thumbnail and save the image
+								</span>
+								<br>
+								<span class="text--smaller">
+									or 
+									<a
+										href="#"
+										data-ng-click="openResultingImage()"
+										data-ng-show="step3"
+									>
+										open image full size in a new window
+									</a>
+								</span>	
+							</td>
+						</tr>
+					</table>		
 				</div>
 			</div>
 		</div>

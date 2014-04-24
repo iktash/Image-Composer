@@ -8,20 +8,26 @@ app.directive("dropzone", function(UploadImage) {
                 e.stopPropagation();
                 e.dataTransfer.dropEffect = 'copy';
 
-                elem.addClass('bg--over');
+                if (attrs.overClass) {
+                    elem.addClass(attrs.overClass);
+                }
 
                 return false;
             });
 
-            elem.bind('dragleave', function(e) {
-                elem.removeClass('bg--over');
-            });
+            if (attrs.overClass) {
+                elem.bind('dragleave', function(e) {
+                    elem.removeClass(attrs.overClass);
+                });
+            }
 
             elem.bind('drop', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                elem.removeClass('bg--over');
+                if (attrs.overClass) {
+                    elem.removeClass(attrs.overClass);
+                }
 
                 var callback = scope.callback();
                 callback(e);
