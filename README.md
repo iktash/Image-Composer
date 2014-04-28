@@ -1,1 +1,0 @@
-Web application for composing several images into one. It is useful for making images like "before-after".

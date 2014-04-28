@@ -26,15 +26,3 @@
     background-image: -ms-radial-gradient(center left, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
     background-image: -o-radial-gradient(center left, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);
 }
-.composer-cell--top-active {
-    background-image: -webkit-radial-gradient(center bottom, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -moz-radial-gradient(center bottom, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);  
-    background-image: -ms-radial-gradient(center bottom, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -o-radial-gradient(center bottom, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);
-}
-.composer-cell--bottom-active {
-    background-image: -webkit-radial-gradient(center top, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -moz-radial-gradient(center top, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);  
-    background-image: -ms-radial-gradient(center top, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -o-radial-gradient(center top, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);
-}
