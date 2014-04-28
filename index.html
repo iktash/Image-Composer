@@ -6,15 +6,15 @@
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="img-comp.css">
-	<link rel="stylesheet" type="text/css" href="composerCanvas.css">
+	<link rel="stylesheet" type="text/css" href="composer/composer-img.css">
 
-	<script src="angular.min.js"></script>
+	<script src="lib/angular.min.js"></script>
 	<script src="img-comp.js"></script>
-	<script src="UploadImage.service.js"></script>
-	<script src="ImageCanvas.service.js"></script>
-	<script src="dropzone.directive.js"></script>
-	<script src="setDragData.directive.js"></script>
-	<script src="composerCanvas.directive.js"></script>
+	<script src="misc/UploadImage.service.js"></script>
+	<script src="composer/ImageComposer.service.js"></script>
+	<script src="misc/dropzone.directive.js"></script>
+	<script src="misc/setDragData.directive.js"></script>
+	<script src="composer/composer-img.directive.js"></script>
 </head>
 <body data-ng-app="image-composer">
 
@@ -24,12 +24,14 @@
 		<div class="action">
 			Upload some new images (or just drop them here)
 			<div class="action-area">
+
 				<input
 					type="file"
 					multiple
 					onchange="angular.element(this).scope().uploadImages(event, this)"
 					class="high"
 				>
+
 			</div>
 		</div>
 	</li>
@@ -38,6 +40,7 @@
 		<div class="action">
 			Place images over canvas' sides
 			<div class="action-area center-text">
+
 				<div data-ng-show="step2">
 					<img
 					    data-ng-src="{{ src }}"
@@ -46,12 +49,13 @@
 					    class="images-holder-img"
 					>
 					<br data-ng-show="images.length > 0">
-					<composer-canvas
-						data-result="resulting_image_url"
+					<composer-img
+						data-img-src="resulting_image_url"
 						data-resize="true"
 					>
-					</composer-canvas>
+					</composer-img>
 				</div>
+
 			</div>
 		</div>
 	</li>
@@ -60,38 +64,17 @@
 		<div class="action">
 			Dowload resulting image
 			<div class="action-area">
+
 				<div data-ng-show="step3">
-					<br>
-					<table class="download">
-						<tr>
-							<td class="center-text text--smaller">
-								<img ng-src="{{ resulting_image_url }}" class="thumb">
-								<br>
-								({{ resulting_resolution.width }} x {{ resulting_resolution.height }})
-							</td>
-							<td class="pad-left">
-								<span class="text--smaller">
-									right click on thumbnail and save the image
-								</span>
-								<br>
-								<span class="text--smaller">
-									or 
-									<a
-										href="#"
-										data-ng-click="openResultingImage()"
-										data-ng-show="step3"
-									>
-										open image full size in a new window
-									</a>
-								</span>	
-							</td>
-						</tr>
-					</table>		
+					<a href="php/download_result.php?name={{ resulting_image_url | pure_name }}">Download</a>
 				</div>
+
 			</div>
 		</div>
 	</li>
 </ol>
+
+<div id="drag_cont"></div>
 
 </body>
 </html>

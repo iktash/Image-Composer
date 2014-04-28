@@ -1,4 +1,4 @@
-app.service("UploadImage", function($q) {
+app.service("UploadImage", function($q, $http) {
     this.upload = function(files) {
         var images = [];
         var deferred = $q.defer();
@@ -16,7 +16,13 @@ app.service("UploadImage", function($q) {
                 images.push(e.target.result);
 
                 if (images.length == files_num) {
-                    deferred.resolve(images);
+                    $http.post("php/upload_image.php", {data: images})
+                        .success(function(data) {
+                            deferred.resolve(data);
+                        })
+                        .error(function(data) {
+                            deferred.reject(data);
+                        });
                 }
             }
             reader.readAsDataURL(f);

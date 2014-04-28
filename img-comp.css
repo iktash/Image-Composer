@@ -50,7 +50,7 @@ ol.cont li {
 	background-color: #fbffcb;
 }
 .bg--3 {
-	background-color: #deffcb;
+	background-color: #cbfff7;
 }
 
 .step-inactive {
@@ -68,7 +68,6 @@ ol.cont li {
 	-ms-flex-grow: 1;
 	flex-grow: 1;
 	font-size: 1.5em;
-	padding-right: 0.5em;
 }
 .action-area {
 	min-height: 100px;
