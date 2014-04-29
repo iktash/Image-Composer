@@ -18,63 +18,45 @@
 </head>
 <body data-ng-app="image-composer">
 
-<ol class="cont top-margin--big" data-ng-controller="ComposerCtrl">
-	<li class="bg--1" data-dropzone="uploadImages" data-over-class="bg--over">
-		<div class="number">1</div>
-		<div class="action">
-			Upload some new images (or just drop them here)
-			<div class="action-area">
-
-				<input
-					type="file"
-					multiple
-					onchange="angular.element(this).scope().uploadImages(event, this)"
-					class="high"
-				>
-
-			</div>
+<div class="cont center-text top-margin--big" data-ng-controller="ComposerCtrl">
+	Upload your images: 
+	<input
+		type="file"
+		multiple
+		onchange="angular.element(this).scope().uploadImages(event, this)"
+	>
+	<div
+		class="images-holder top-margin"
+	>
+		<div
+			class="dropzone"
+			data-ng-class="{'dropzone--inline': images.length > 0}"
+			data-dropzone="uploadImages"
+			data-over-class="dropzone--over"
+		>
+			or drop them to upload
 		</div>
-	</li>
-	<li class="bg--2" data-ng-class="{'step-inactive': !step2}">
-		<div class="number">2</div>
-		<div class="action">
-			Place images over canvas' sides
-			<div class="action-area center-text">
+		<img
+		    data-ng-src="{{ src }}"
+		    data-ng-repeat="src in images track by $index"
+		    data-set-drag-data="{{ src }}";
+		    class="images-holder-img"
+		>
+	</div>
+	
+	<br data-ng-show="images.length > 0">
 
-				<div data-ng-show="step2">
-					<img
-					    data-ng-src="{{ src }}"
-					    data-ng-repeat="src in images track by $index"
-					    data-set-drag-data="{{ src }}";
-					    class="images-holder-img"
-					>
-					<br data-ng-show="images.length > 0">
-					<composer-img
-						data-img-src="resulting_image_url"
-						data-resize="true"
-					>
-					</composer-img>
-				</div>
+	<composer-img
+		data-img-src="resulting_image_url"
+		data-resize="true"
+		data-ng-show="images.length > 0"
+	>
+	</composer-img>
 
-			</div>
-		</div>
-	</li>
-	<li class="bg--3" data-ng-class="{'step-inactive': !step3}">
-		<div class="number">3</div>
-		<div class="action">
-			Dowload resulting image
-			<div class="action-area">
-
-				<div data-ng-show="step3" class="high">
-					<a href="php/download_result.php?name={{ resulting_image_url | pure_name }}">Download</a>
-				</div>
-
-			</div>
-		</div>
-	</li>
-</ol>
-
-<div id="drag_cont"></div>
+	<div data-ng-show="resulting_image_url" class="high">
+		<a href="php/download_result.php?name={{ resulting_image_url | pure_name }}">Download</a>
+	</div>
+</div>
 
 </body>
 </html>

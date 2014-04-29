@@ -11,18 +11,38 @@
     margin: auto;
 }
 .composer-cont .composer-cell {
-    width: 2em;
-    height: 2em;
+    width: 40px;
+    height: 40px;
 }
-.composer-cell--left-active {
-    background-image: -webkit-radial-gradient(center right, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -moz-radial-gradient(center right, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);  
-    background-image: -ms-radial-gradient(center right, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -o-radial-gradient(center right, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);
+.composer-cell--left {
+    background-image: -webkit-radial-gradient(center right, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%); 
+    background-image: -moz-radial-gradient(center right, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%);  
+    background-image: -ms-radial-gradient(center right, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%); 
+    background-image: -o-radial-gradient(center right, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%);
 }
+.composer-cell--right {
+    background-image: -webkit-radial-gradient(center left, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%); 
+    background-image: -moz-radial-gradient(center left, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%);  
+    background-image: -ms-radial-gradient(center left, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%); 
+    background-image: -o-radial-gradient(center left, ellipse cover, #27fff6 0%, rgba(0,0,0,0) 73%);
+}
+
+.composer-cell--left,
+.composer-cell--right {
+    opacity: 0;
+    -webkit-transition: opacity 500ms ease;
+    -moz-transition: opacity 500ms ease;
+    -o-transition: opacity 500ms ease;
+    -ms-transition: opacity 500ms ease;
+    transition: opacity 500ms ease;
+}
+
+.composer-cell--left-active,
 .composer-cell--right-active {
-    background-image: -webkit-radial-gradient(center left, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -moz-radial-gradient(center left, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);  
-    background-image: -ms-radial-gradient(center left, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%); 
-    background-image: -o-radial-gradient(center left, ellipse cover, rgb(33,233,250) 0%, rgba(0,0,0,0) 73%);
+    opacity: 1;
+    -webkit-transition: opacity 500ms ease;
+    -moz-transition: opacity 500ms ease;
+    -o-transition: opacity 500ms ease;
+    -ms-transition: opacity 500ms ease;
+    transition: opacity 500ms ease;
 }
