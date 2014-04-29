@@ -13,11 +13,14 @@ class ImageComposer
     {
         $init_image = new GdImage($this->initial_image);
         $new_image = new GdImage($image_path);
+        
+        $min_height = self::getMin($init_image->height, $new_image->height);
 
-        $max_height = self::getMax($init_image->height, $new_image->height);
+        $init_image->resizeImageHeight($min_height);
+        $new_image->resizeImageHeight($min_height);
 
         $res_image = new GdImage();
-        $res_image->createImage($init_image->width + $new_image->width, $max_height);
+        $res_image->createImage($init_image->width + $new_image->width, $min_height);
 
         if ($side == "right") {
             $left_image = $init_image;
@@ -28,10 +31,14 @@ class ImageComposer
         }
 
         $y = self::getMiddlePos($res_image->height, $left_image->height);
-        $res_image->copyImage($left_image, 0, $y);
+        if (! $res_image->copyImage($left_image, 0, $y)) {
+            Error::respond("Can not copy left image in " . __FILE__);
+        }
 
         $y = self::getMiddlePos($res_image->height, $right_image->height);
-        $res_image->copyImage($right_image, $left_image->width, $y);
+        if (! $res_image->copyImage($right_image, $left_image->width, $y)) {
+            Error::respond("Can not copy right image in " . __FILE__);
+        }
 
         $res_image->save($result_path);
     }
@@ -41,9 +48,9 @@ class ImageComposer
         return ($range - $distance) * 0.5;
     }
 
-    public static function getMax($val1, $val2)
+    public static function getMin($val1, $val2)
     {
-        if ($val1 > $val2) {
+        if ($val1 < $val2) {
             return $val1;
         } else {
             return $val2;

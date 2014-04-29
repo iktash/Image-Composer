@@ -10,7 +10,6 @@ app.service("ImageComposer", function($q, $http) {
 
         $http.post("php/add_image_to.php", data)
             .success(function(new_src) {
-                console.log(new_src);
                 def.resolve(new_src);
             })
             .error(function(error) {

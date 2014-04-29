@@ -20,6 +20,9 @@ app.directive("composerImg", function($window) {
                 ImageComposer.addImageTo(side, $scope.image, image_src)
                     .then(function(new_src) {
                         $scope.image = new_src;
+                    })
+                    .catch(function(error) {
+                        console.log(error);
                     });
             }
 
