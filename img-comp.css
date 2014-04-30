@@ -42,12 +42,24 @@ input[type="file"] {
 	border: 1px dashed black;
 	vertical-align: middle;
 	padding: 0 0.5em;
+
+	-webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    -o-transition: background-color 500ms ease;
+    -ms-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
 }
 .dropzone--inline {
 	display: inline-block;
 }
 .dropzone--over {
 	background-color: #94fbff;
+
+	-webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    -o-transition: background-color 500ms ease;
+    -ms-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
 }
 .images-holder {
 	min-height: 4em;

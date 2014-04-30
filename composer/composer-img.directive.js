@@ -33,8 +33,20 @@ app.directive("composerImg", function($window) {
             $scope.droppedRight = function(e) {
                 droppedTo("right", e);
             }
+
+            $scope.droppedResult = function(e) {
+                var image_src = e.dataTransfer.getData('text/plain');
+
+                $scope.$apply(function(){
+                    $scope.image = image_src;
+                });
+            }
         },
         link: function (scope, elem, attrs) {
+            elem.find("img").on("dragstart", function(e) {
+                e.preventDefault();
+            });
+
             var resize_width = 0.7;
             if (attrs.resizeWidth) {
                 resize_width = Number(attrs.resizeWidth);

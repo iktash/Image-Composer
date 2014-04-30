@@ -1,15 +1,25 @@
 <div class="composer-substrate flex-cont flex-center">
 
     <div
-        class="composer-side"
+        class="composer-side margin-right"
         data-dropzone="droppedLeft"
         data-over-class="composer-side--over"
     ></div>
 
-    <img class="composer-img" data-ng-src="{{ image }}">
+    <div
+        class="composer-img-cont"
+        data-dropzone="droppedResult"
+        data-over-class="composer-img-cont--overlay"
+    >
+        <img
+            class="composer-img"
+            data-ng-src="{{ image }}"
+        >
+        <div class="composer-overlay"></div>
+    </div>
 
     <div
-        class="composer-side"
+        class="composer-side margin-left"
         data-dropzone="droppedRight"
         data-over-class="composer-side--over"
     ></div>
