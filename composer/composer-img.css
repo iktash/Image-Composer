@@ -1,9 +1,49 @@
-.composer-img {
-    vertical-align: middle;
+.flex-cont {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 }
+
+.flex-center {
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
 .composer-substrate {
     background-color: #aaa;
+    padding: 1em;
 }
+
+.composer-img {
+    margin: 0 0.3em;
+}
+
+.composer-side {
+    width: 50px;
+    border: 1px dashed black;
+
+    -webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    -o-transition: background-color 500ms ease;
+    -ms-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
+}
+.composer-side--over {
+    background-color: #94fbff;
+
+    -webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    -o-transition: background-color 500ms ease;
+    -ms-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
+}
+
+
+
+
+
 .composer-cont {
     border-collapse: separate;
     border: none;

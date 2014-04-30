@@ -1,29 +1,17 @@
-<div class="composer-substrate">
-    <table class="composer-cont">
-        <tr>
-            <td class="composer-cell"></td>
-            <td class="composer-cell"></td>
-            <td class="composer-cell"></td>
-        </tr>
-        <tr>
-            <td
-                class="composer-cell composer-cell--left"
-                data-dropzone="droppedLeft"
-                data-over-class="composer-cell--left-active"
-            ></td>
-            <td>
-                <img class="composer-img" data-ng-src="{{ image }}">
-            </td>
-            <td
-                class="composer-cell composer-cell--right"
-                data-dropzone="droppedRight"
-                data-over-class="composer-cell--right-active"
-            ></td>
-        </tr>
-        <tr>
-            <td class="composer-cell"></td>
-            <td class="composer-cell"></td>
-            <td class="composer-cell"></td>
-        </tr>
-    </table>
+<div class="composer-substrate flex-cont flex-center">
+
+    <div
+        class="composer-side"
+        data-dropzone="droppedLeft"
+        data-over-class="composer-side--over"
+    ></div>
+
+    <img class="composer-img" data-ng-src="{{ image }}">
+
+    <div
+        class="composer-side"
+        data-dropzone="droppedRight"
+        data-over-class="composer-side--over"
+    ></div>
+
 </div>

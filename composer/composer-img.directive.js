@@ -6,11 +6,12 @@ app.directive("composerImg", function($window) {
         scope: {
             image: "=imgSrc"
         },
-        controller: function($scope, ImageComposer) {
-            $scope.setSize = function(jimg) {
-                jimg.css({
-                    'max-width': $window.innerWidth * 0.6 + 'px',
-                    'max-height': $window.innerHeight * 0.3 + 'px'
+        controller: function($scope, $element, ImageComposer) {
+            $scope.setSize = function(resize_width, resize_height) {
+                var img = $element.find("img");
+                img.css({
+                    'max-width': $window.innerWidth * resize_width + 'px',
+                    'max-height': $window.innerHeight * resize_height + 'px'
                 });
             }
 
@@ -34,14 +35,22 @@ app.directive("composerImg", function($window) {
             }
         },
         link: function (scope, elem, attrs) {
-            var img = elem.find('img');
+            var resize_width = 0.7;
+            if (attrs.resizeWidth) {
+                resize_width = Number(attrs.resizeWidth);
+            }
 
-            scope.setSize(img);
+            var resize_height = 0.4;
+            if (attrs.resizeHeight) {
+                resize_height = Number(attrs.resizeHeight);
+            }
+
+            scope.setSize(resize_width, resize_height);
 
             if (attrs.resize) {
                 angular.element($window).bind('resize', function() {
                     scope.$apply(function() {
-                        scope.setSize(img);
+                        scope.setSize(resize_width, resize_height);
                     });
                 });
             }
